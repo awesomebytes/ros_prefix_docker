@@ -56,6 +56,11 @@ RUN $PREFIXED ebuild catkin-* manifest
 # Until https://github.com/ros/ros-overlay/pull/606 is merged we need this
 ADD patches/ros-cmake.eclass $EPREFIX/usr/local/portage/eclass
 
+# Until https://github.com/ros/ros-overlay/pull/603 is merged we need this
+WORKDIR $EPREFIX/usr/local/portage/dev-python/rosdep
+RUN mv rosdep-0.11.8.ebuild rosdep-0.12.2.ebuild
+RUN $PREFIXED ebuild rosdep-0.12.2.ebuild manifest
+
 WORKDIR $EPREFIX
 # echo "Setup the basic ROS"
 RUN date > ros_base_start.txt \

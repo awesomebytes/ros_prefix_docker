@@ -23,7 +23,7 @@ RUN date > start_bootstrap_date.txt && \
 echo "Y \
  \
 /tmp/gentoo \
-luck" | time ./bootstrap-prefix.sh && date > end_bootstrap_date.txt
+luck" | ./bootstrap-prefix.sh && date > end_bootstrap_date.txt
 
 # Create the .tar.gz
 # RUN cd /tmp && tar cvzf /home/rosuser/gentoo_bootstrapped_on_tmp.tar.gz gentoo

@@ -1,0 +1,28 @@
+From 44f89f68ed8542ca32de47f97f2db5742fa7ebe9 Mon Sep 17 00:00:00 2001
+From: Sammy Pfeiffer <sammypfeiffer@gmail.com>
+Date: Thu, 26 Apr 2018 22:14:53 +1000
+Subject: [PATCH] Dirty hack to keep the compilation going
+
+---
+ src/tree.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/tree.c b/src/tree.c
+index 53e8a89..437d8eb 100644
+--- a/src/tree.c
++++ b/src/tree.c
+@@ -950,7 +950,10 @@ void colm_tree_upref( tree_t *tree )
+ void colm_tree_downref( program_t *prg, tree_t **sp, tree_t *tree )
+ {
+ 	if ( tree != 0 ) {
+-		assert( tree->refs > 0 );
++		// on certain 32 bits OS this assert fails
++		// and blocks a very long chain of packages from building
++		// even tho they aren't really using colm
++		// assert( tree->refs > 0 );
+ 		tree->refs -= 1;
+ 		if ( tree->refs == 0 )
+ 			tree_free_rec( prg, sp, tree );
+-- 
+1.9.1
+

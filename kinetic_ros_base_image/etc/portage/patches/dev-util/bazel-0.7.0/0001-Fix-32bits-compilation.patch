@@ -1,0 +1,39 @@
+From 305048f6da0eb4dd489cd1417affd42f611e3126 Mon Sep 17 00:00:00 2001
+From: Sammy Pfeiffer <sammypfeiffer@gmail.com>
+Date: Sun, 29 Apr 2018 02:15:14 +1000
+Subject: [PATCH] Fix 32bits compilation
+
+---
+ scripts/bootstrap/bootstrap.sh | 2 +-
+ src/BUILD                      | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/scripts/bootstrap/bootstrap.sh b/scripts/bootstrap/bootstrap.sh
+index eeac8d1..37fc57b 100755
+--- a/scripts/bootstrap/bootstrap.sh
++++ b/scripts/bootstrap/bootstrap.sh
+@@ -47,7 +47,7 @@ else
+         --host_java_toolchain=//src/java_tools/buildjar:bootstrap_toolchain \
+         --spawn_strategy=standalone \
+         --nojava_header_compilation \
+-        --strategy=Javac=worker --worker_quit_after_build --ignore_unsupported_sandboxing \
++        --strategy=Javac=standalone --ignore_unsupported_sandboxing \
+         --compilation_mode=opt \
+         ${EXTRA_BAZEL_ARGS:-}"
+ fi
+diff --git a/src/BUILD b/src/BUILD
+index 7c79e67..e56d5bd 100755
+--- a/src/BUILD
++++ b/src/BUILD
+@@ -200,7 +200,7 @@ py_binary(
+             "//src/java_tools/singlejar:SingleJar_deploy.jar",
+         ],
+         "//conditions:default": [
+-            "//src/tools/singlejar:singlejar",
++            "//src/java_tools/singlejar:SingleJar_deploy.jar",
+         ],
+     }) + (select({
+         ":darwin": [
+-- 
+1.9.1
+

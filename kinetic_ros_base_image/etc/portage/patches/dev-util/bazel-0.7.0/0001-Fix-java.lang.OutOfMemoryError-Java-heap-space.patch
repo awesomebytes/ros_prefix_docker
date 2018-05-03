@@ -1,0 +1,25 @@
+From 4fbd08331c74b40da02915542d11f437292ceb52 Mon Sep 17 00:00:00 2001
+From: Sammy Pfeiffer <sammypfeiffer@gmail.com>
+Date: Sun, 29 Apr 2018 03:38:15 +1000
+Subject: [PATCH] Fix java.lang.OutOfMemoryError: Java heap space
+
+---
+ scripts/bootstrap/compile.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/bootstrap/compile.sh b/scripts/bootstrap/compile.sh
+index b478944..f827957 100755
+--- a/scripts/bootstrap/compile.sh
++++ b/scripts/bootstrap/compile.sh
+@@ -119,7 +119,7 @@ function java_compilation() {
+     cat "$paramfile" >&2
+   fi
+ 
+-  run "${JAVAC}" -classpath "${classpath}" -sourcepath "${sourcepath}" \
++  run "${JAVAC}" -J-Xmx512m -classpath "${classpath}" -sourcepath "${sourcepath}" \
+       -d "${output}/classes" -source "$JAVA_VERSION" -target "$JAVA_VERSION" \
+       -encoding UTF-8 "@${paramfile}"
+ 
+-- 
+1.9.1
+

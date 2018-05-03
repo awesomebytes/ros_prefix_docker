@@ -1,0 +1,10 @@
+# required by ros-kinetic/catkin-0.7.11::ros-overlay
+# required by ros-kinetic/nodelet-1.9.14::ros-overlay
+# required by ros-kinetic/nodelet_core-1.9.14::ros-overlay
+# required by ros-kinetic/ros_base-1.3.2::ros-overlay
+# required by ros-kinetic/ros_base (argument)
+# /tmp/gentoo/usr/portage/profiles/package.mask:
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (26 Apr 2018)
+# Merged into >=dev-cpp/gtest-1.8.0.
+# Masked for removal in 30 days.
+=dev-cpp/gmock-1.7.0-r1

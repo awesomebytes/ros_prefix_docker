@@ -20,10 +20,10 @@ RUN echo ">app-editors/nano-2.9.5" >> /tmp/gentoo/etc/portage/package.mask
 # Give answers to the interactive bootstrapper
 # and keep a log of how long it took
 RUN date > start_bootstrap_date.txt && \
-echo "Y \
- \
-/tmp/gentoo \
-luck" | ./bootstrap-prefix.sh && date > end_bootstrap_date.txt
+echo "Y\n\
+\n\
+/tmp/gentoo\n\
+luck\n" | ./bootstrap-prefix.sh && date > end_bootstrap_date.txt
 
 # Create the .tar.gz
 # RUN cd /tmp && tar cvzf /home/rosuser/gentoo_bootstrapped_on_tmp.tar.gz gentoo

@@ -63,12 +63,13 @@ RUN $PREFIXED ebuild rosdep-0.12.2.ebuild manifest
 
 WORKDIR $EPREFIX
 
+# Make sure rosdep emerges OK
 RUN $PREFIXED emerge dev-python/rosdep
 
 
-# echo "Setup the basic ROS"
-# RUN date > ros_base_start.txt \
-#     && $PREFIXED  emerge ros-kinetic/ros_base \
-#     && date > ros_base_end.txt
+# Setup the basic ROS
+RUN date > ros_base_start.txt \
+    && $PREFIXED  emerge ros-kinetic/ros_base \
+    && date > ros_base_end.txt
 
 ENTRYPOINT ["/bin/bash"]

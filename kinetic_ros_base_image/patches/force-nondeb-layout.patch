@@ -1,7 +1,7 @@
-From 6418e4a3647afedaebb95f455b30f807f83080ce Mon Sep 17 00:00:00 2001
+From 2b82cf3158f2b7572fae3f5b9734bf797b84c6df Mon Sep 17 00:00:00 2001
 From: Sammy Pfeiffer <Sammy.Pfeiffer@student.uts.edu.au>
-Date: Thu, 3 May 2018 03:59:12 +0000
-Subject: [PATCH] Fix Gentoo case
+Date: Fri, 4 May 2018 03:59:32 +1000
+Subject: [PATCH] force nondeb layout
 
 ---
  cmake/python.cmake | 7 ++++---
@@ -22,11 +22,9 @@ index 6459430..77d2774 100644
 +# if(EXISTS "/etc/debian_version")
 +#   set(enable_setuptools_deb_layout ON)
 +# endif()
- option(SETUPTOOLS_DEB_LAYOUT "Enable debian style python package layout" 
-${enable_setuptools_deb_layout})
+ option(SETUPTOOLS_DEB_LAYOUT "Enable debian style python package layout" ${enable_setuptools_deb_layout})
  
  if(SETUPTOOLS_DEB_LAYOUT)
 -- 
-2.17.0
-
+2.7.4
 

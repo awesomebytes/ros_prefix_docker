@@ -65,6 +65,8 @@ WORKDIR $EPREFIX
 
 # Make sure rosdep emerges OK
 RUN $PREFIXED emerge dev-python/rosdep
+# Make sure catkin emerges OK
+RUN $PREFIXED emerge ros-kinetic/catkin
 
 
 # Setup the basic ROS

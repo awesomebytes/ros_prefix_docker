@@ -24,6 +24,10 @@ COPY --chown=rosuser:rosuser package.use $EPREFIX/etc/portage
 RUN echo "sys-fs/udev-init-scripts-32\n" >> $EPREFIX/etc/portage/profile/package.provided
 RUN $PREFIXED emerge sys-fs/udev-init-scripts
 
+RUN echo "en_US.UTF-8 UTF-8" >> $EPREFIX/etc/locale.gen
+RUN $PREFIXED locale-gen
+RUN $PREFIXED LANG=en_US.UTF-8 emerge -1 dev-ruby/rdoc
+
 RUN $PREFIXED emerge ros-kinetic/image_transport_plugins
 
 

@@ -74,4 +74,7 @@ RUN date > ros_base_start.txt \
     && $PREFIXED  emerge ros-kinetic/ros_base \
     && date > ros_base_end.txt
 
+# Create the bin packages
+RUN $PREFIXED quickpkg "*/*" --include-config y --include-unmodified-config y
+
 ENTRYPOINT ["/bin/bash"]

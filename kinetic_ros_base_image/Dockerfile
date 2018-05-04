@@ -3,6 +3,11 @@
 # and adds ros-kinetic/ros_base
 FROM awesomebytes/ros_prefix_bootstrapped_image:latest
 
+# Allow rosuser to do sudo without password for debugging
+USER root
+COPY rosuser /etc/sudoers.d/rosuser
+RUN chmod -R o-w /etc/sudoers.d/
+
 USER rosuser
 
 # We need to do this before any command that deal with gentoo prefix:

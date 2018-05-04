@@ -23,7 +23,7 @@ COPY --chown=rosuser:rosuser package.use $EPREFIX/etc/portage
 # need to patch udev-init-scripts-32
 COPY --chown=rosuser:rosuser patches/udev-init-scripts-32.ebuild $EPREFIX/usr/portage/sys-fs/udev-init-scripts
 WORKDIR $EPREFIX/usr/portage/sys-fs/
-RUN ebuild udev-init-scripts-32.ebuild manifest
+RUN $PREFIXED ebuild udev-init-scripts-32.ebuild manifest
 WORKDIR /home/rosuser
 
 RUN $PREFIXED emerge ros-kinetic/image_transport_plugins

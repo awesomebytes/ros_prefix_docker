@@ -13,5 +13,8 @@ docker pull awesomebytes/ros_prefix_bootstrapped_image
 ```
 
 * `ros_prefix_kinetic_ros_base`: Builds on top of `ros_prefix_bootstrapped_image` the [ros-overlay](https://github.com/ros/ros-overlay) emerging `ros-kinetic/ros_base`.
+```bash
+docker pull awesomebytes/ros_prefix_kinetic_ros_base
+```
 
 TODO: More advanced emerging of ROS packages

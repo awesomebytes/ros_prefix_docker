@@ -10,7 +10,7 @@ ENV EPREFIX=/tmp/gentoo
 
 # All commands to run in the Gentoo Prefix environment must
 # be preprended by $PREFIXED
-COPY --chown=rosuser:rosuser --chown=rosuser:rosuser execute_on_prefix.sh /tmp/execute_on_prefix.sh
+COPY --chown=rosuser:rosuser execute_on_prefix.sh /tmp/execute_on_prefix.sh
 ENV PREFIXED=/tmp/execute_on_prefix.sh
 
 # By default it's python3 (option 1)

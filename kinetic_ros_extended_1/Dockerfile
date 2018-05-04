@@ -21,7 +21,8 @@ COPY --chown=rosuser:rosuser package.use $EPREFIX/etc/portage
 
 # This was never pulled before... but apparently it is now,
 # need to just tell the system udev-init-scripts-32 is satisfied
-RUN echo "udev-init-scripts-32\n" >> $EPREFIX/etc/portage/profile/package.provided
+RUN echo "sys-fs/udev-init-scripts-32\n" >> $EPREFIX/etc/portage/profile/package.provided
+RUN $PREFIXED emerge sys-fs/udev-init-scripts
 
 RUN $PREFIXED emerge ros-kinetic/image_transport_plugins
 

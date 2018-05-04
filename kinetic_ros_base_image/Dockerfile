@@ -80,6 +80,7 @@ RUN date > ros_base_start.txt \
     && date > ros_base_end.txt
 
 # Create the bin packages
+WORKDIR /home/rosuser
 RUN $PREFIXED quickpkg "*/*" --include-config y --include-unmodified-config y
 
 ENTRYPOINT ["/bin/bash"]

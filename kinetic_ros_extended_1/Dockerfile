@@ -10,6 +10,10 @@ RUN $PREFIXED emerge ros-kinetic/navigation
 
 RUN $PREFIXED emerge ros-kinetic/rosbridge_suite
 
+WORKDIR $EPREFIX/usr/lib
+RUN ln -s libboost_python-2.7.so libboost_python.so
+WORKDIR /home/rosuser
+
 RUN $PREFIXED emerge ros-kinetic/image_common
 
 RUN $PREFIXED emerge ros-kinetic/image_transport_plugins

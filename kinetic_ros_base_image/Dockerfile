@@ -10,7 +10,7 @@ ENV EPREFIX=/tmp/gentoo
 
 # All commands to run in the Gentoo Prefix environment must
 # be preprended by $PREFIXED
-ADD execute_on_prefix.sh /tmp/execute_on_prefix.sh
+COPY --chown=rosuser:rosuser --chown=rosuser:rosuser execute_on_prefix.sh /tmp/execute_on_prefix.sh
 ENV PREFIXED=/tmp/execute_on_prefix.sh
 
 # By default it's python3 (option 1)
@@ -40,21 +40,21 @@ RUN $PREFIXED emaint sync -r ros-overlay
 # Add package.use package.mask and patches
 # that hopefully will get fixed upstream with time
 # so we don't need them
-COPY etc/* $EPREFIX/etc/portage
+COPY --chown=rosuser:rosuser --chown=rosuser:rosuser etc/* $EPREFIX/etc/portage
 
 
 # Until https://bugs.gentoo.org/654678 is fixed we need this
-ADD patches/log4cxx-0.10.0-r1.ebuild $EPREFIX/usr/portage/dev-libs/log4cxx/log4cxx-0.10.0-r1.ebuild
+COPY --chown=rosuser:rosuser --chown=rosuser:rosuser patches/log4cxx-0.10.0-r1.ebuild $EPREFIX/usr/portage/dev-libs/log4cxx/log4cxx-0.10.0-r1.ebuild
 WORKDIR $EPREFIX/usr/portage/dev-libs/log4cxx
 RUN $PREFIXED ebuild log4cxx-0.10.0-r1.ebuild manifest
 
 # Until https://github.com/ros/ros-overlay/pull/605 is merged we need this
-ADD patches/force-nondeb-layout.patch $EPREFIX/usr/local/portage/ros-kinetic/catkin/files
+COPY --chown=rosuser:rosuser --chown=rosuser:rosuser patches/force-nondeb-layout.patch $EPREFIX/usr/local/portage/ros-kinetic/catkin/files
 WORKDIR $EPREFIX/usr/local/portage/ros-kinetic/catkin
 RUN $PREFIXED ebuild catkin-* manifest
 
 # Until https://github.com/ros/ros-overlay/pull/606 is merged we need this
-ADD patches/ros-cmake.eclass $EPREFIX/usr/local/portage/eclass
+COPY --chown=rosuser:rosuser --chown=rosuser:rosuser patches/ros-cmake.eclass $EPREFIX/usr/local/portage/eclass
 
 # Until https://github.com/ros/ros-overlay/pull/603 is merged we need this
 WORKDIR $EPREFIX/usr/local/portage/dev-python/rosdep

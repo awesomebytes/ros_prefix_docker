@@ -19,6 +19,13 @@ RUN $PREFIXED emerge ros-kinetic/image_common
 # image_transport_plugins needs some new use rules
 COPY --chown=rosuser:rosuser package.use $EPREFIX/etc/portage
 
+# This was never pulled before... but apparently it is now,
+# need to patch udev-init-scripts-32
+COPY --chown=rosuser:rosuser patches/udev-init-scripts-32.ebuild $EPREFIX/usr/portage/sys-fs/udev-init-scripts
+WORKDIR $EPREFIX/usr/portage/sys-fs/
+RUN ebuild udev-init-scripts-32.ebuild manifest
+WORKDIR /home/rosuser
+
 RUN $PREFIXED emerge ros-kinetic/image_transport_plugins
 
 

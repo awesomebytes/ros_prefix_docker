@@ -2,7 +2,7 @@
 # Ubuntu 16.04 Gentoo Prefix on /tmp/gentoo
 # with ros-kinetic/ros_base and builds more
 # ros-kinetic packages
-FROM awesomebytes/ros_prefix_bootstrapped_image:latest
+FROM awesomebytes/ros_prefix_kinetic_ros_base:latest
 
 USER rosuser
 

@@ -28,6 +28,9 @@ RUN echo "en_US.UTF-8 UTF-8" >> $EPREFIX/etc/locale.gen
 RUN $PREFIXED locale-gen
 RUN $PREFIXED LANG=en_US.UTF-8 emerge -1 dev-ruby/rdoc
 
+RUN $PREFIXED emerge dev-qt/qttest
+RUN $PREFIXED emerge dev-qt/qtconcurrent
+
 RUN $PREFIXED emerge ros-kinetic/image_transport_plugins
 
 

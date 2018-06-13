@@ -3,6 +3,8 @@ This repo contains the different Dockerfiles to build the ROS Prefix stuff incre
 
 ROS Prefix allows you to extract a full ROS distro (ROS Kinetic right now) into a folder and be dropped into a shell with access to all of it (and it's dependencies) without touching your OS (without any privileges required).
 
+This avoids any library problems (like different libc versions) and allows anyone to use ROS on an old system or unprivileged system.
+
 # Already made images
 * `ros_prefix_base_image`: Contains a Ubuntu 16.04 with some build tools installed.
 ```bash

@@ -33,6 +33,11 @@ RUN $PREFIXED emerge dev-qt/qtconcurrent
 
 RUN $PREFIXED emerge ros-kinetic/image_transport_plugins
 
+RUN $PREFIXED emerge ros-kinetic/ddynamic_reconfigure_python
+
+RUN $PREFIXED emerge ros-kinetic/image_pipeline
+
+
 
 # Create the bin packages
 RUN $PREFIXED quickpkg "*/*" --include-config y --include-unmodified-config y

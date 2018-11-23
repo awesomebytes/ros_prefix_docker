@@ -7,11 +7,22 @@ FROM awesomebytes/ros_prefix_base_image32:latest
 USER root
 RUN apt-get update
 RUN apt-get install wget -y
+# All these flags are needed to compile 32bit on a 64bit kernel
+ENV CHOST i686-pc-linux-gnu
+ENV CXXFLAGS -m32
+ENV CFLAGS -m32
+ENV LDFLAGS -m32
 
 USER rosuser
 
 RUN wget https://gitweb.gentoo.org/repo/proj/prefix.git/plain/scripts/bootstrap-prefix.sh
 RUN chmod +x bootstrap-prefix.sh
+
+# # workaround https://forums.gentoo.org/viewtopic-p-8284322.html#8284322
+# RUN mkdir -p /tmp/gentoo/etc/portage/
+# RUN echo ">sys-devel/gcc-7.3.0-r3" >> /tmp/gentoo/etc/portage/package.mask
+RUN mkdir -p /tmp/gentoo/etc/portage/
+RUN echo "dev-lang/perl-5.26.2 -berkdb" >> /tmp/gentoo/etc/portage/package.use
 
 # Give answers to the interactive bootstrapper
 # and keep a log of how long it took

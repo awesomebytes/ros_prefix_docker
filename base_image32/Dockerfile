@@ -6,6 +6,10 @@ RUN apt-get update
 # Create user
 RUN apt-get install apt-utils sudo -y
 RUN useradd --create-home --shell=/bin/bash rosuser
+# Give the user a password
+RUN echo rosuser:rosuser | chpasswd
+# Allow the user to do sudo
+RUN usermod -aG sudo rosuser
 RUN chown -R rosuser /home/rosuser/
 RUN chmod -R o-w /etc/sudoers.d/
 WORKDIR /home/rosuser/

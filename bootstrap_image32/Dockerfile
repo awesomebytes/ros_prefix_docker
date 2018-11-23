@@ -18,9 +18,9 @@ USER rosuser
 RUN wget https://gitweb.gentoo.org/repo/proj/prefix.git/plain/scripts/bootstrap-prefix.sh
 RUN chmod +x bootstrap-prefix.sh
 
-# # workaround https://forums.gentoo.org/viewtopic-p-8284322.html#8284322
-# RUN mkdir -p /tmp/gentoo/etc/portage/
-# RUN echo ">sys-devel/gcc-7.3.0-r3" >> /tmp/gentoo/etc/portage/package.mask
+# To avoid gcc 8.2.0-r4 failing compiling
+RUN mkdir -p /tmp/gentoo/etc/portage/
+RUN echo ">sys-devel/gcc-7.3.0-r3" >> /tmp/gentoo/etc/portage/package.mask
 RUN mkdir -p /tmp/gentoo/etc/portage/
 RUN echo "dev-lang/perl-5.26.2 -berkdb" >> /tmp/gentoo/etc/portage/package.use
 
